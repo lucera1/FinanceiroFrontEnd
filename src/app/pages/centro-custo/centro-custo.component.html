@@ -1,0 +1,36 @@
+<h2>Centro de Custos</h2>
+
+<!-- Form de criação -->
+<form *ngIf="!centroEditando" (ngSubmit)="criarCentro()">
+  <label>Razão Social:</label>
+  <input [(ngModel)]="novoCentro.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+  <button type="submit">Criar</button>
+</form>
+
+<!-- Form de edição -->
+<form *ngIf="centroEditando" (ngSubmit)="atualizarCentro()">
+  <label>Razão Social:</label>
+  <input [(ngModel)]="centroEditando.razaoSocial" name="razaoSocial" required>
+  <button type="submit">Atualizar</button>
+  <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Razão Social</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of centrosCusto">
+      <td>{{ c.id }}</td>
+      <td>{{ c.razaoSocial }}</td>
+      <td>
+        <button (click)="editarCentro(c)">Editar</button>
+        <button (click)="deletarCentro(c.id)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

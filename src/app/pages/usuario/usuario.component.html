@@ -1,0 +1,50 @@
+<h2>Usuários</h2>
+
+<!-- Form de criação -->
+<form *ngIf="!usuarioEditando" (ngSubmit)="criarUsuario()">
+  <input [(ngModel)]="novoUsuario.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+  <input [(ngModel)]="novoUsuario.email" name="email" placeholder="Email" required>
+  <input [(ngModel)]="novoUsuario.senha" name="senha" placeholder="Senha" type="password" required>
+  <select [(ngModel)]="novoUsuario.tipoPessoa" name="tipoPessoa">
+    <option value="CLIENTE">Cliente</option>
+    <option value="ADMIN">Admin</option>
+  </select>
+  <button type="submit">Criar</button>
+</form>
+
+<!-- Form de edição -->
+<form *ngIf="usuarioEditando" (ngSubmit)="atualizarUsuario()">
+  <input [(ngModel)]="usuarioEditando.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+  <input [(ngModel)]="usuarioEditando.email" name="email" placeholder="Email" required>
+  <input [(ngModel)]="usuarioEditando.senha" name="senha" placeholder="Senha" type="password" required>
+  <select [(ngModel)]="usuarioEditando.tipoPessoa" name="tipoPessoa">
+    <option value="CLIENTE">Cliente</option>
+    <option value="ADMIN">Admin</option>
+  </select>
+  <button type="submit">Atualizar</button>
+  <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Razão Social</th>
+      <th>Email</th>
+      <th>Tipo</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of usuarios">
+      <td>{{ u.id }}</td>
+      <td>{{ u.razaoSocial }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.tipoPessoa }}</td>
+      <td>
+        <button (click)="editarUsuario(u)">Editar</button>
+        <button (click)="deletarUsuario(u.id!)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

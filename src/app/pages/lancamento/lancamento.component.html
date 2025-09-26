@@ -1,0 +1,122 @@
+<div class="container">
+  <h2>Lançamentos</h2>
+
+  <!-- FORMULÁRIO DE EDIÇÃO -->
+  <form *ngIf="lancamentoEditando" (ngSubmit)="atualizarLancamento()"
+        style="display: grid; gap: 8px; max-width: 500px; margin-bottom: 16px;">
+
+    <input type="text" placeholder="Descrição"
+           [(ngModel)]="lancamentoEditando.descricao" name="descricao" required />
+
+    <input type="text" placeholder="Parcela (ex: 1/3)"
+           [(ngModel)]="lancamentoEditando.parcela" name="parcela" />
+
+    <input type="date" placeholder="Data Lançamento"
+           [(ngModel)]="lancamentoEditando.dataLancamento" name="dataLancamento" required />
+
+    <input type="date" placeholder="Data Vencimento"
+           [(ngModel)]="lancamentoEditando.dataVencimento" name="dataVencimento" required />
+
+    <input type="number" placeholder="Valor"
+           [(ngModel)]="lancamentoEditando.valor" name="valor" required />
+
+    <select [(ngModel)]="lancamentoEditando.tipoLancamento" name="tipoLancamento" required>
+      <option *ngFor="let tipo of tiposLancamento" [ngValue]="tipo">{{ tipo }}</option>
+    </select>
+
+    <select [(ngModel)]="lancamentoEditando.situacao" name="situacao" required>
+      <option *ngFor="let sit of situacoes" [ngValue]="sit">{{ sit }}</option>
+    </select>
+
+    <select [(ngModel)]="lancamentoEditando.contaId" name="contaId" required>
+      <option *ngFor="let c of contas" [ngValue]="c.id">{{ c.descricao }}</option>
+    </select>
+
+    <select [(ngModel)]="lancamentoEditando.centroCustoId" name="centroCustoId">
+      <option [ngValue]="null">— Selecione Centro de Custo —</option>
+      <option *ngFor="let cc of centrosCusto" [ngValue]="cc.id">{{ cc.razaoSocial }}</option>
+    </select>
+
+    <div style="display: flex; gap: 8px;">
+      <button type="submit">Atualizar</button>
+      <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+    </div>
+  </form>
+
+  <!-- FORMULÁRIO DE CRIAÇÃO -->
+  <form *ngIf="!lancamentoEditando" (ngSubmit)="criarLancamento()"
+        style="display: grid; gap: 8px; max-width: 500px; margin-bottom: 16px;">
+
+    <input type="text" placeholder="Descrição"
+           [(ngModel)]="novoLancamento.descricao" name="descricao" required />
+
+    <input type="text" placeholder="Parcela (ex: 1/3)"
+           [(ngModel)]="novoLancamento.parcela" name="parcela" />
+
+    <input type="date" placeholder="Data Lançamento"
+           [(ngModel)]="novoLancamento.dataLancamento" name="dataLancamento" required />
+
+    <input type="date" placeholder="Data Vencimento"
+           [(ngModel)]="novoLancamento.dataVencimento" name="dataVencimento" required />
+
+    <input type="number" placeholder="Valor"
+           [(ngModel)]="novoLancamento.valor" name="valor" required />
+
+    <select [(ngModel)]="novoLancamento.tipoLancamento" name="tipoLancamento" required>
+      <option *ngFor="let tipo of tiposLancamento" [ngValue]="tipo">{{ tipo }}</option>
+    </select>
+
+    <select [(ngModel)]="novoLancamento.situacao" name="situacao" required>
+      <option *ngFor="let sit of situacoes" [ngValue]="sit">{{ sit }}</option>
+    </select>
+
+    <select [(ngModel)]="novoLancamento.contaId" name="contaId" required>
+      <option *ngFor="let c of contas" [ngValue]="c.id">{{ c.descricao }}</option>
+    </select>
+
+    <select [(ngModel)]="novoLancamento.centroCustoId" name="centroCustoId">
+      <option [ngValue]="null">— Selecione Centro de Custo —</option>
+      <option *ngFor="let cc of centrosCusto" [ngValue]="cc.id">{{ cc.razaoSocial }}</option>
+    </select>
+
+    <button type="submit">Criar</button>
+  </form>
+
+  <!-- LISTA DE LANÇAMENTOS -->
+  <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Parcela</th>
+        <th>Data Lançamento</th>
+        <th>Data Vencimento</th>
+        <th>Valor</th>
+        <th>Tipo</th>
+        <th>Situação</th>
+        <th>Conta</th>
+        <th>Centro de Custo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lanc of lancamentos">
+        <td>{{ lanc.id }}</td>
+        <td>{{ lanc.descricao }}</td>
+        <td>{{ lanc.parcela || '—' }}</td>
+        <td>{{ lanc.dataLancamento | date }}</td>
+        <td>{{ lanc.dataVencimento | date }}</td>
+        <td>{{ lanc.valor | currency:'BRL' }}</td>
+        <td>{{ lanc.tipoLancamento }}</td>
+        <td>{{ lanc.situacao }}</td>
+        <td>{{ getDescricaoConta(lanc.contaId) }}</td>
+        <td>{{ getRazaoCentroCusto(lanc.centroCustoId) }}</td>
+        <td style="display: flex; gap: 4px;">
+          <button (click)="editarLancamento(lanc)">Editar</button>
+          <button (click)="deletarLancamento(lanc.id!)">Deletar</button>
+          <button *ngIf="lanc.situacao === 'ABERTO'" (click)="pagarLancamento(lanc.id!)">Pagar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,34 @@
+<h2>Bancos</h2>
+
+<!-- Form de criação -->
+<form *ngIf="!bancoEditando" (ngSubmit)="criarBanco()">
+  <input [(ngModel)]="novoBanco.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+  <button type="submit">Criar Banco</button>
+</form>
+
+<!-- Form de edição -->
+<form *ngIf="bancoEditando" (ngSubmit)="atualizarBanco()">
+  <input [(ngModel)]="bancoEditando.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+  <button type="submit">Atualizar</button>
+  <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Razão Social</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let b of bancos">
+      <td>{{ b.id }}</td>
+      <td>{{ b.razaoSocial }}</td>
+      <td>
+        <button (click)="editarBanco(b)">Editar</button>
+        <button (click)="deletarBanco(b.id)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

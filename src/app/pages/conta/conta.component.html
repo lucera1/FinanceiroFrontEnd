@@ -1,0 +1,93 @@
+<h2>Contas</h2>
+
+<!-- Form de criação -->
+<form *ngIf="!contaEditando" (ngSubmit)="criarConta()">
+  <input [(ngModel)]="novaConta.descricao" name="descricao" placeholder="Descrição" required>
+  <input [(ngModel)]="novaConta.numero" name="numero" placeholder="Número" required>
+  <input [(ngModel)]="novaConta.agencia" name="agencia" placeholder="Agência" required>
+  <input [(ngModel)]="novaConta.limite" name="limite" placeholder="Limite" type="number">
+
+  <div>
+  <label for="usuarioId">Usuário:</label>
+  <select id="usuarioId" [(ngModel)]="novaConta.usuarioId" name="usuarioId" required>
+    <option value="" disabled selected>Selecione um usuário</option>
+    <option *ngFor="let u of usuarios" [value]="u.id">{{ u.razaoSocial }}</option>
+  </select>
+</div>
+
+<div>
+  <label for="bancoId">Banco:</label>
+  <select id="bancoId" [(ngModel)]="novaConta.bancoId" name="bancoId" required>
+    <option value="" disabled selected>Selecione um banco</option>
+    <option *ngFor="let b of bancos" [value]="b.id">{{ b.razaoSocial }}</option>
+  </select>
+</div>
+
+
+  <!-- Tipo Conta -->
+ <div>
+  <label for="tipoConta">Tipo de Conta:</label>
+  <select id="tipoConta" [(ngModel)]="novaConta.tipoConta" name="tipoConta" required>
+    <option value="" disabled selected>Selecione um tipo</option>
+    <option *ngFor="let t of tiposConta" [value]="t">{{ t }}</option>
+  </select>
+</div>
+
+  <button type="submit">Criar Conta</button>
+</form>
+
+<!-- Form de edição -->
+<form *ngIf="contaEditando" (ngSubmit)="atualizarConta()">
+  <input [(ngModel)]="contaEditando.descricao" name="descricao" placeholder="Descrição" required>
+  <input [(ngModel)]="contaEditando.numero" name="numero" placeholder="Número" required>
+  <input [(ngModel)]="contaEditando.agencia" name="agencia" placeholder="Agência" required>
+  <input [(ngModel)]="contaEditando.limite" name="limite" placeholder="Limite" type="number">
+
+  <select [(ngModel)]="contaEditando.usuarioId" name="usuarioId" required>
+<option *ngFor="let u of usuarios" [value]="u.id">{{ u.razaoSocial }}</option>
+  </select>
+
+  <select [(ngModel)]="contaEditando.bancoId" name="bancoId" required>
+<option *ngFor="let b of bancos" [value]="b.id">{{ b.razaoSocial }}</option>
+  </select>
+
+  <!-- Tipo Conta -->
+  <select [(ngModel)]="contaEditando.tipoConta" name="tipoConta" required>
+    <option *ngFor="let t of tiposConta" [value]="t">{{ t }}</option>
+  </select>
+
+  <button type="submit">Atualizar</button>
+  <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Descrição</th>
+      <th>Número</th>
+      <th>Agência</th>
+      <th>Limite</th>
+      <th>Tipo Conta</th>
+      <th>Usuário</th>
+      <th>Banco</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of contas">
+      <td>{{ c.id }}</td>
+      <td>{{ c.descricao }}</td>
+      <td>{{ c.numero }}</td>
+      <td>{{ c.agencia }}</td>
+      <td>{{ c.limite }}</td>
+      <td>{{ c.tipoConta || '—' }}</td>
+      <td>{{ getNomeUsuario(c.usuarioId) }}</td>
+      <td>{{ getNomeBanco(c.bancoId) }}</td>
+      <td>
+        <button (click)="editarConta(c)">Editar</button>
+        <button (click)="deletarConta(c.id!)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
