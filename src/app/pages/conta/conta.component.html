@@ -6,6 +6,7 @@
   <input [(ngModel)]="novaConta.numero" name="numero" placeholder="Número" required>
   <input [(ngModel)]="novaConta.agencia" name="agencia" placeholder="Agência" required>
   <input [(ngModel)]="novaConta.limite" name="limite" placeholder="Limite" type="number">
+  <input [(ngModel)]="novaConta.saldo" name="saldo" placeholder="Saldo" type="number">
 
   <div>
   <label for="usuarioId">Usuário:</label>
@@ -42,6 +43,7 @@
   <input [(ngModel)]="contaEditando.numero" name="numero" placeholder="Número" required>
   <input [(ngModel)]="contaEditando.agencia" name="agencia" placeholder="Agência" required>
   <input [(ngModel)]="contaEditando.limite" name="limite" placeholder="Limite" type="number">
+  <input [(ngModel)]="contaEditando.saldo" name="saldo" placeholder="Saldo" type="number">
 
   <select [(ngModel)]="contaEditando.usuarioId" name="usuarioId" required>
 <option *ngFor="let u of usuarios" [value]="u.id">{{ u.razaoSocial }}</option>
@@ -68,6 +70,7 @@
       <th>Número</th>
       <th>Agência</th>
       <th>Limite</th>
+      <th>Saldo</th>
       <th>Tipo Conta</th>
       <th>Usuário</th>
       <th>Banco</th>
@@ -81,6 +84,7 @@
       <td>{{ c.numero }}</td>
       <td>{{ c.agencia }}</td>
       <td>{{ c.limite }}</td>
+      <td>{{ c.saldo }}</td>
       <td>{{ c.tipoConta || '—' }}</td>
       <td>{{ getNomeUsuario(c.usuarioId) }}</td>
       <td>{{ getNomeBanco(c.bancoId) }}</td>
