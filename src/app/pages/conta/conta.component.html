@@ -1,5 +1,7 @@
 <h2>Contas</h2>
 
+
+<div class="card-content">
 <!-- Form de criação -->
 <form *ngIf="!contaEditando" (ngSubmit)="criarConta()">
   <input [(ngModel)]="novaConta.descricao" name="descricao" placeholder="Descrição" required>
@@ -95,3 +97,4 @@
     </tr>
   </tbody>
 </table>
+</div>

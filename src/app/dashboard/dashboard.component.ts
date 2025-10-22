@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  // Apenas serve como container para as rotas filhas
+
+  constructor(private router: Router) {}
+
+  navegar(rota: string) {
+    this.router.navigate([rota]);
+  }
 }

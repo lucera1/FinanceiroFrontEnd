@@ -1,0 +1,40 @@
+<h2>Extratos</h2>
+
+
+<div class="card-content">
+
+<!-- Tabela de extratos -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>ID Conta</th>
+      <th>Descrição</th>
+      <th>Tipo</th>
+      <th>Valor</th>
+      <th>Saldo Após</th>
+      <th>Limite Após</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of extratos">
+      <td>{{ e.id }}</td>
+      <td>{{ e.contaId }}</td>
+      <td>{{ e.descricao }}</td>
+      <td>{{ e.tipoLancamento }}</td>
+      <td>R$ {{ e.valor | number: '1.2-2' }}</td>
+      <td>R$ {{ e.saldoAposMovimentacao | number: '1.2-2' }}</td>
+      <td>R$ {{ e.limiteAposMovimentacao | number: '1.2-2' }}</td>
+      <td>{{ e.data | date: 'dd/MM/yyyy HH:mm' }}</td>
+      <td>
+        <button (click)="deletarExtrato(e.id)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="carregando">Carregando extratos...</p>
+<p *ngIf="!carregando && extratos.length === 0">Nenhum extrato encontrado.</p>
+</div>

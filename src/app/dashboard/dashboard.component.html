@@ -1,12 +1,53 @@
 <div class="dashboard-container">
-  <h2>Bem-vindo ao Dashboard</h2>
-  
-  <div class="button-grid">
-    <button routerLink="usuario">Usuários</button>
-    <button routerLink="banco">Bancos</button>
-    <button routerLink="conta">Contas</button>
-    <button routerLink="centro-custo">Centro de Custo</button>
-    <button routerLink="lancamento">Lançamentos</button>
+  <header class="dashboard-header">
+    <h1>Bem-vindo ao Dashboard</h1>
+    <p>Gerencie suas contas, lançamentos e extratos de forma fácil e visual</p>
+  </header>
+
+  <div class="card-grid">
+
+    <!-- Card Usuários -->
+    <div class="card">
+      <h3>Usuários</h3>
+      <p>Gerencie os usuários do sistema</p>
+      <button type="button" class="btn pastel-blue" (click)="navegar('/dashboard/usuario')">Gerenciar</button>
+    </div>
+
+    <!-- Card Bancos -->
+    <div class="card">
+      <h3>Bancos</h3>
+      <p>Cadastre e edite seus bancos</p>
+      <button type="button" class="btn pastel-green" (click)="navegar('/dashboard/banco')">Acessar</button>
+    </div>
+
+    <!-- Card Contas -->
+    <div class="card">
+      <h3>Contas</h3>
+      <p>Visualize e gerencie suas contas</p>
+      <button type="button" class="btn pastel-purple" (click)="navegar('/dashboard/conta')">Visualizar</button>
+    </div>
+
+    <!-- Card Centro de Custo -->
+    <div class="card">
+      <h3>Centro de Custo</h3>
+      <p>Organize os centros de custo</p>
+      <button type="button" class="btn pastel-pink" (click)="navegar('/dashboard/centro-custo')">Organizar</button>
+    </div>
+
+    <!-- Card Lançamentos -->
+    <div class="card">
+      <h3>Lançamentos</h3>
+      <p>Controle entradas e saídas</p>
+      <button type="button" class="btn pastel-orange" (click)="navegar('/dashboard/lancamento')">Abrir</button>
+    </div>
+
+    <!-- Card Extratos -->
+    <div class="card">
+      <h3>Extratos</h3>
+      <p>Veja o histórico de movimentações</p>
+      <button type="button" class="btn pastel-teal" (click)="navegar('/dashboard/extrato')">Ver Extratos</button>
+    </div>
+
   </div>
 
   <router-outlet></router-outlet>

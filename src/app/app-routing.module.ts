@@ -8,6 +8,7 @@ import { ContaComponent } from './pages/conta/conta.component';
 import { CentroCustoComponent } from './pages/centro-custo/centro-custo.component';
 import { LancamentoComponent } from './pages/lancamento/lancamento.component';
 import { AuthGuard } from './auth/auth.guard';
+import { ExtratoComponent } from './pages/extrato/extrato.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'conta', component: ContaComponent },
       { path: 'centro-custo', component: CentroCustoComponent },
       { path: 'lancamento', component: LancamentoComponent }, 
+      { path: 'extrato', component: ExtratoComponent },
       { path: '', redirectTo: '', pathMatch: 'full' }
     ]
   }

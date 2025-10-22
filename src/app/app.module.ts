@@ -13,6 +13,8 @@ import { BancoComponent } from './pages/banco/banco.component';
 import { ContaComponent } from './pages/conta/conta.component';
 import { CentroCustoComponent } from './pages/centro-custo/centro-custo.component';
 import { LancamentoComponent } from './pages/lancamento/lancamento.component';
+import { ExtratoComponent } from './pages/extrato/extrato.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { LancamentoComponent } from './pages/lancamento/lancamento.component';
     ContaComponent,
     CentroCustoComponent,
     LancamentoComponent,
+    ExtratoComponent
   ],
 
   imports: [

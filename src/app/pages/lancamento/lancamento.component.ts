@@ -10,6 +10,7 @@ import { CentroCustoService } from '../../services/centro-custo.service';
 @Component({
   selector: 'app-lancamento',
   templateUrl: './lancamento.component.html',
+  styleUrls: ['./lancamento.component.css']
 })
 export class LancamentoComponent implements OnInit {
   lancamentos: Lancamento[] = [];

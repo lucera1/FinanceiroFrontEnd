@@ -1,5 +1,6 @@
 <h2>Bancos</h2>
 
+<div class="card-content">
 <!-- Form de criação -->
 <form *ngIf="!bancoEditando" (ngSubmit)="criarBanco()">
   <input [(ngModel)]="novoBanco.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
@@ -32,3 +33,4 @@
     </tr>
   </tbody>
 </table>
+</div>

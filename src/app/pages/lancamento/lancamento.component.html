@@ -1,6 +1,7 @@
 <div class="container">
   <h2>Lançamentos</h2>
 
+  <div class="card-content">
   <!-- FORMULÁRIO DE EDIÇÃO -->
   <form *ngIf="lancamentoEditando" (ngSubmit)="atualizarLancamento()"
         style="display: grid; gap: 8px; max-width: 500px; margin-bottom: 16px;">
@@ -83,7 +84,7 @@
   </form>
 
   <!-- LISTA DE LANÇAMENTOS -->
-  <table border="1" cellpadding="8" cellspacing="0" style="width: 100%; text-align: left;">
+  <table>
     <thead>
       <tr>
         <th>ID</th>
@@ -111,7 +112,7 @@
         <td>{{ lanc.situacao }}</td>
         <td>{{ getDescricaoConta(lanc.contaId) }}</td>
         <td>{{ getRazaoCentroCusto(lanc.centroCustoId) }}</td>
-        <td style="display: flex; gap: 4px;">
+        <td>
           <button (click)="editarLancamento(lanc)">Editar</button>
           <button (click)="deletarLancamento(lanc.id!)">Deletar</button>
           <button *ngIf="lanc.situacao === 'ABERTO'" (click)="pagarLancamento(lanc.id!)">Pagar</button>
@@ -119,4 +120,5 @@
       </tr>
     </tbody>
   </table>
+</div>
 </div>
