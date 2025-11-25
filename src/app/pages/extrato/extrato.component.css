@@ -105,3 +105,14 @@ table button:last-of-type {
     font-size: 0.85rem;
   }
 }
+
+.chart-container {
+  width: 320px;       /* ajuste como quiser */
+  max-width: 100%;
+  margin: 0 auto;     /* centraliza */
+}
+
+#pieChart {
+  max-width: 100%;
+  height: 280px !important;  /* diminui */
+}
