@@ -9,10 +9,13 @@ import { CentroCustoComponent } from './pages/centro-custo/centro-custo.componen
 import { LancamentoComponent } from './pages/lancamento/lancamento.component';
 import { AuthGuard } from './auth/auth.guard';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
+import { CadastroComponent } from './auth/cadastro/cadastro.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'cadastro', component: CadastroComponent },
+
   {
     path: 'dashboard',
     component: DashboardComponent,

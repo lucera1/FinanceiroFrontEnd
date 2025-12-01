@@ -1,2 +1,10 @@
+<div class="usuario-header">
+ 
+  <!-- Botão de logout -->
+  <button *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
+</div>
+
+<!-- resto do conteúdo da página -->
+
 
 <router-outlet></router-outlet>

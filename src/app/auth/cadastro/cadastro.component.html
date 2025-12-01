@@ -1,0 +1,40 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="login-section">
+      <h2>Cadastro</h2>
+
+      <form (ngSubmit)="cadastrar()">
+        <div class="input-group">
+          <label>Razão Social</label>
+          <input type="text" [(ngModel)]="usuario.razaoSocial" name="razaoSocial" required>
+        </div>
+
+        <div class="input-group">
+          <label>Email</label>
+          <input type="email" [(ngModel)]="usuario.email" name="email" required>
+        </div>
+
+        <div class="input-group">
+          <label>Senha</label>
+          <input type="password" [(ngModel)]="usuario.senha" name="senha" required>
+        </div>
+
+        <div class="input-group">
+          <label>Tipo de Usuário</label>
+          <select [(ngModel)]="usuario.tipoPessoa" name="tipoPessoa" required>
+            <option value="ADMIN">ADMIN</option>
+            <option value="CLIENTE">CLIENTE</option>
+          </select>
+        </div>
+
+        <div *ngIf="errorMessage" class="erro">{{ errorMessage }}</div>
+
+        <button type="submit" class="btn-login">Cadastrar</button>
+      </form>
+
+      <p class="switch-login">
+        Já tem uma conta? <a routerLink="/login">Faça login aqui</a>
+      </p>
+    </div>
+  </div>
+</div>

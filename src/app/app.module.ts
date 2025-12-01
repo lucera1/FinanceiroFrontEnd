@@ -14,6 +14,7 @@ import { ContaComponent } from './pages/conta/conta.component';
 import { CentroCustoComponent } from './pages/centro-custo/centro-custo.component';
 import { LancamentoComponent } from './pages/lancamento/lancamento.component';
 import { ExtratoComponent } from './pages/extrato/extrato.component';
+import { CadastroComponent } from './auth/cadastro/cadastro.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ExtratoComponent } from './pages/extrato/extrato.component';
     ContaComponent,
     CentroCustoComponent,
     LancamentoComponent,
-    ExtratoComponent
+    ExtratoComponent,
+    CadastroComponent
   ],
 
   imports: [

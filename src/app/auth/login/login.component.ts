@@ -32,4 +32,9 @@ export class LoginComponent {
       }
     });
   }
+
+  irParaCadastro() {
+    this.router.navigate(['/cadastro']);
+  }
+
 }

@@ -87,3 +87,12 @@
   margin-bottom: 15px;
   font-weight: bold;
 }
+
+.btn-cadastro{
+  border: 0;
+  color: #4e54c8;
+}
+
+.btn-cadastro:hover{
+  cursor: pointer;
+}

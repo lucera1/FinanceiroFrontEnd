@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { Usuario } from 'src/app/models/usuario.models';
 
 @Injectable({
   providedIn: 'root'
@@ -42,4 +43,10 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  cadastrarUsuario(usuario: Usuario): Observable<any> {
+  return this.http.post(`${this.apiUrl}/register`, usuario, { responseType: 'text' });
+}
+
+
 }
